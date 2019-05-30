@@ -16,6 +16,7 @@
 ### step3
 #### django 
         change PASSWORD settings.py 
+![django migration](/note/update_password.png)
 
 ```shell
     python manage.py makemigrations
@@ -24,6 +25,7 @@
 ```shell
     python manage.py migrate
 ```
+![django migration](/note/migration.png)
 
 ### step4
 #### 堆场数据导入
@@ -38,3 +40,4 @@
     example：
     source C:\\Users\\wode2\\Desktop\\vessel\\LE-FINAL-DESIGN\\server\\vessel\\yardmon_yard.sql;
 ```
+![django migration](/note/data_import.png)
