@@ -12,6 +12,7 @@
 ```mysql
     CREATE DATABASE final_vessel CHARACTER SET 'utf8';
 ```
+![Create database](/note/database_create.png)
 ### step3
 #### django 
         change PASSWORD settings.py 
