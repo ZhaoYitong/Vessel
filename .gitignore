@@ -1,0 +1,7 @@
+.vs
+.idea
+~$*
+*.tmp
+ __pycache__/
+ *.pyc
+settings.py

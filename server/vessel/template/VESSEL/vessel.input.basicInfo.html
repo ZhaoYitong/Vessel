@@ -1,0 +1,168 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'images/smu.jpg' %}" rel="icon">
+    <link href="{% static 'css/tool/google-api.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tool/bootstrap_v4/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.input.css' %}" rel="stylesheet">
+</head>
+<body id="page-top">
+<div id="add-vessel" class="col-md-9">
+<h1> 添加船舶 </h1>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">船名</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-name">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">进口航次</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-import-voy" value="FromPortland">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">出口航次</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-export-voy" value="ToNewYork001">
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">计划靠泊位置</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-plan-ber-pos" value="02">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">实际靠泊位置</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-real-ber-pos" value="03">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">靠泊方向</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-ber-dir" value="L">
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">船长</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-length" value="360">
+        <div class="input-group-append">
+            <span class="input-group-text">m</span>
+        </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">船舶宽度</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-width" value="80">
+        <div class="input-group-append">
+            <span class="input-group-text">m</span>
+        </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">船首长度</span>
+            </div>
+        <input type="text" class="form-control" id="vessel-front-length" value="120">
+        <div class="input-group-append">
+            <span class="input-group-text">m</span>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">20尺贝数</span>
+            </div>
+        <input type="text" class="form-control" id="bay-inch20-num" value="45">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">机舱位置</span>
+            </div>
+        <input type="number" class="form-control" id="engine-pos" value="31">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">机舱宽度</span>
+            </div>
+        <input type="number" class="form-control" id="engine-width" value="2">
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">甲板最大层高</span>
+            </div>
+        <input type="number" class="form-control" id="deck-max-layer-num" value="6">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">舱内最大层深</span>
+            </div>
+        <input type="number" class="form-control" id="cabin-max-layer-num" value="5">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">甲板最大列数</span>
+            </div>
+        <input type="number" class="form-control" id="deck-max-col-num" value="7">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">舱内最大列数</span>
+            </div>
+        <input type="number" class="form-control" id="cabin-max-col-num" value="4">
+        </div>
+    </div>
+</div>
+<button id="add-vessel-submit" class="btn btn-primary">提交</button>
+</div>
+<script src="{% static 'js/tool/jquery_v3/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/tool/bootstrap_v4/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/custom.input.js' %}"></script>
+</body>
+</html>

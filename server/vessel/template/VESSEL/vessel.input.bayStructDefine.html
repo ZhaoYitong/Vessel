@@ -1,0 +1,56 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'images/smu.jpg' %}" rel="icon">
+    <link href="{% static 'css/tool/google-api.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tool/bootstrap_v4/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.input.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.common.css' %}" rel="stylesheet">
+</head>
+<body id="page-top">
+<div id="define-bay-struct" class="top50">
+    <div class="form-group col-md-3">
+        <h1>请选择船舶</h1>
+        <select class="form-control" id="vesselSelect">
+            {% for v in all_vessel %}
+            <option>{{ v }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div id="control-buttons">
+        <div id="buttons-bay" class="d-flex flex-row">
+            <button type="button" class="btn btn-outline-primary bayCombineInfo"
+                    onclick="get_combined_info()">当前组贝</button>
+            <button type="button" class="btn btn-outline-primary reStartCombine"
+                    onclick="combineReset()">重新组贝</button>
+            <button type="button" class="btn btn-outline-primary confirmCombine" disabled
+                    onclick="combineToConfirm()">确认组贝</button>
+        </div>
+    </div>
+    <div class="zoomToggle d-flex flex-row">
+    <input id="test" min="1" max="10" value='10' step="1"
+           onchange="showVal(this.value)" type="range"/>
+    </div>
+    <div class="bayStructArea">
+        <div class="bayArea">
+            <div class="bayArea_40"></div>
+            <div id="selectable" class="bayArea_20"></div>
+        </div>
+        <div class="newBayArea"></div>
+        <div class="vesselAreaSide">
+            <div class="onBoardSide"></div>
+            <div class="belowBoardSide"></div>
+        </div>
+    </div>
+    <div id="bay-define-area" style="display: none;"></div>
+</div>
+<script src="{% static 'js/tool/jquery_v3/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/tool/bootstrap_v4/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/tool/jquery-ui.min.js' %}"></script>
+<script src="{% static 'layui_layer/layer/layer.js' %}"></script>
+<script src="{% static 'js/custom.input.js' %}"></script>
+</body>
+</html>

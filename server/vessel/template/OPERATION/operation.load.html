@@ -1,0 +1,315 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'images/smu.jpg' %}" rel="icon">
+    <link href="{% static 'css/tool/jquery-ui.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tool/google-api.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tool/bootstrap_v4/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.vessel.load.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.common.css' %}" rel="stylesheet">
+</head>
+<body id="page-top">
+<div class="allVessels col-md-3">
+    <div class="form-group">
+        <h1>请选择船舶</h1>
+        <select class="form-control" id="vesselSelect">
+            {% for v in all_vessel %}
+            <option>{{ v }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<div id="terminal-all">
+    <div class="VESSEL-AREA">
+        <div id="control-buttons">
+            <div id="buttons-bay" class="d-flex flex-row">
+                <button type="button" class="btn btn-outline-primary bayCombineInfo"
+                        onclick="getCombineInfo()">当前组贝
+                </button>
+                <button type="button" class="btn btn-outline-success createVessel"
+                        onclick="createVesselSide()">生成船舶
+                </button>
+                <button type="button" class="btn btn-primary operationConfirm"
+                        onclick="confirmOperation()">确认配载
+                </button>
+            </div>
+        </div>
+        <div id="toggle-giz">
+            <div class="zoomToggle d-flex flex-row">
+                <input min="1" max="10" value='10' step="1"
+                       onchange="vessel_size_toggle(this.value)" type="range"/>
+            </div>
+        </div>
+        <div id="vessel-area" class="mainArea">
+            <div class="vesselAreaSide"></div>
+            <div class="newBayArea"></div>
+        </div>
+    </div>
+    <div class="OPERATION-AREA top50" style="display: flex;">
+        <div id="bay-struct-yard" class="col-md-6" name="bay-struct-yard" style="height: 400px;border: 2px solid silver;">
+<!-- container informatino area -->
+
+
+            <div id="container_information" class="container_information" hidden="true">
+                <div class="con-info-table-outer">
+                <table class="container_information_table">
+                    <tr>
+                        <td height="10%" id="container_information_title" colspan="11" bgcolor="#a9a9a9">**贝位详细信息</td>
+                    </tr>
+                    <tr height="14%" id="container_information_5_layer">
+                        <td width="10%" bgcolor="#a9a9a9">5</td>
+                        <td width="9%" id="A5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="A5"></div>
+                        </td>
+                        <td width="9%" id="B5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="B5"></div>
+                        </td>
+                        <td width="9%" id="C5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="C5"></div>
+                        </td>
+                        <td width="9%" id="D5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="D5"></div>
+                        </td>
+                        <td width="9%" id="E5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="E5"></div>
+                        </td>
+                        <td width="9%" id="F5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="F5"></div>
+                        </td>
+                        <td width="9%" id="G5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="G5"></div>
+                        </td>
+                        <td width="9%" id="H5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="H5"></div>
+                        </td>
+                        <td width="9%" id="I5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="I5"></div>
+                        </td>
+                        <td width="9%" id="J5" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="J5"></div>
+                        </td>
+                    </tr>
+                    <tr height="14%" id="container_information_4_layer">
+                        <td width="10%" bgcolor="#a9a9a9">4</td>
+                        <td width="9%" id="A4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="A4"></div>
+                        </td>
+                        <td width="9%" id="B4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="B4"></div>
+                        </td>
+                        <td width="9%" id="C4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="C4"></div>
+                        </td>
+                        <td width="9%" id="D4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="D4"></div>
+                        </td>
+                        <td width="9%" id="E4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="E4"></div>
+                        </td>
+                        <td width="9%" id="F4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="F4"></div>
+                        </td>
+                        <td width="9%" id="G4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="G4"></div>
+                        </td>
+                        <td width="9%" id="H4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="H4"></div>
+                        </td>
+                        <td width="9%" id="I4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="I4"></div>
+                        </td>
+                        <td width="9%" id="J4" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="J4"></div>
+                        </td>
+                    </tr>
+                    <tr height="14%" id="container_information_3_layer">
+                        <td width="10%" bgcolor="#a9a9a9">3</td>
+                        <td width="9%" id="A3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="A3"></div>
+                        </td>
+                        <td width="9%" id="B3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="B3"></div>
+                        </td>
+                        <td width="9%" id="C3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="C3"></div>
+                        </td>
+                        <td width="9%" id="D3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="D3"></div>
+                        </td>
+                        <td width="9%" id="E3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="E3"></div>
+                        </td>
+                        <td width="9%" id="F3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="F3"></div>
+                        </td>
+                        <td width="9%" id="G3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="G3"></div>
+                        </td>
+                        <td width="9%" id="H3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="H3"></div>
+                        </td>
+                        <td width="9%" id="I3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="I3"></div>
+                        </td>
+                        <td width="9%" id="J3" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="J3"></div>
+                        </td>
+                    </tr>
+                    <tr height="14%" id="container_information_2_layer">
+                        <td width="10%" bgcolor="#a9a9a9">2</td>
+                        <td width="9%" id="A2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="A2"></div>
+                        </td>
+                        <td width="9%" id="B2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="B2"></div>
+                        </td>
+                        <td width="9%" id="C2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="C2"></div>
+                        </td>
+                        <td width="9%" id="D2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="D2"></div>
+                        </td>
+                        <td width="9%" id="E2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="E2"></div>
+                        </td>
+                        <td width="9%" id="F2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="F2"></div>
+                        </td>
+                        <td width="9%" id="G2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="G2"></div>
+                        </td>
+                        <td width="9%" id="H2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="H2"></div>
+                        </td>
+                        <td width="9%" id="I2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="I2"></div>
+                        </td>
+                        <td width="9%" id="J2" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="J2"></div>
+                        </td>
+                    </tr>
+                    <tr height="14%" id="container_information_1_layer">
+                        <td width="10%" bgcolor="#a9a9a9">1</td>
+                        <td width="9%" id="A1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="A1"></div>
+                        </td>
+                        <td width="9%" id="B1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="B1"></div>
+                        </td>
+                        <td width="9%" id="C1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="C1"></div>
+                        </td>
+                        <td width="9%" id="D1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="D1"></div>
+                        </td>
+                        <td width="9%" id="E1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="E1"></div>
+                        </td>
+                        <td width="9%" id="F1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="F1"></div>
+                        </td>
+                        <td width="9%" id="G1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="G1"></div>
+                        </td>
+                        <td width="9%" id="H1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="H1"></div>
+                        </td>
+                        <td width="9%" id="I1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="I1"></div>
+                        </td>
+                        <td width="9%" id="J1" onmouseenter="fun_infor(this)" onmouseleave="re_fun_infor(this)">
+                            <div class="con" col_lay="J1"></div>
+                        </td>
+                    </tr>
+                    <tr height="14%" id="container_information_col" bgcolor="#a9a9a9">
+                        <td width="10%">层数<br>贝位</td>
+                        <td width="9%">1</td>
+                        <td width="9%">2</td>
+                        <td width="9%">3</td>
+                        <td width="9%">4</td>
+                        <td width="9%">5</td>
+                        <td width="9%">6</td>
+                        <td width="9%">7</td>
+                        <td width="9%">8</td>
+                        <td width="9%">9</td>
+                        <td width="9%">10</td>
+                    </tr>
+                    <tr>
+                        <td class="table-confirm" colspan="11">
+                            <input id="container_information_button" type="button" onclick='des()' value="确定">
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <div id="add_table">
+                    <table class="add_table">
+                        <tr>
+                            <td width="40%">场箱位</td>
+                            <td id="add1">BBB</td>
+                        </tr>
+                        <tr>
+                            <td>状态</td>
+                            <td id="add2"></td>
+                        </tr>
+                        <tr>
+                            <td>箱号</td>
+                            <td id="add3"></td>
+                        </tr>
+                        <tr>
+                            <td>装卸船</td>
+                            <td id="add4"></td>
+                        </tr>
+                        <tr>
+                            <td>箱型</td>
+                            <td id="add5"></td>
+                        </tr>
+                        <tr>
+                            <td>箱重</td>
+                            <td id="add6"></td>
+                        </tr>
+                        <tr>
+                            <td>卸货港</td>
+                            <td id="add7"></td>
+                        </tr>
+                        <tr>
+                            <td>尺寸</td>
+                            <td id="add8"></td>
+                        </tr>
+                        <tr>
+                            <td>持箱人</td>
+                            <td id="add9"></td>
+                        </tr>
+                        <tr>
+                            <td>装卸日期</td>
+                            <td id="add10"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="bay-struct-vessel" class="col-md-6" name="bay-struct-vessel"
+             style="border: 2px solid;">
+        </div>
+    </div>
+    <div id="control-button" class="top100">
+        <div id="button-yard" class="d-flex flex-row">
+            <button type="button" class="btn btn-outline-primary yardInfo"
+                    onclick="showYardInfo()">显示堆场
+            </button>
+        </div>
+    </div>
+    <div class="toggle-giz">
+        <div class="zoomToggle d-flex flex-row">
+            <input min="1" max="10" value='10' step="1"
+                   onchange="yard_size_toggle(this.value)" type="range"/>
+        </div>
+    </div>
+    <div id="yard-area" class="YARD-AREA top50"></div>
+</div>
+<script src="{% static 'js/tool/jquery_v3/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/tool/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/tool/bootstrap_v4/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/custom.vessel.load.js' %}"></script>
+</body>
+</html>
