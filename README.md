@@ -3,12 +3,13 @@
 ## 部署说明
 ### step1
 #### 相关包依赖
-    pip module list
-    mysqlclient
+```shell
+pip requirement
+Django         2.2
+mysqlclient    1.4.1
+```
 ### step2
 #### 新建数据库 
-        login mysql account in cmd control panel
-    
 ```mysql
     CREATE DATABASE final_vessel CHARACTER SET 'utf8';
 ```
@@ -29,15 +30,11 @@
 
 ### step4
 #### 堆场数据导入
-        mysql cmd panel
 ```mysql
     use final_vessel;
 ```
 
 ```mysql
     source 文件路径
-
-    example：
-    source C:\\Users\\wode2\\Desktop\\vessel\\LE-FINAL-DESIGN\\server\\vessel\\yardmon_yard.sql;
 ```
 ![django migration](/note/data_import.png)
